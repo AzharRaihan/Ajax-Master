@@ -2,26 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoCollect;
+use App\Models\AjaxCrud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
-class InfoCollectController extends Controller
+class AjaxCrudController extends Controller
 {
-    public function index()
+    public function crudCreate()
     {
-        $infoCollects = InfoCollect::latest()->get();
+        return view('Ajax-Crud.index');
+    }
+    
+    public function crudIndex()
+    {
+        $allData = AjaxCrud::latest()->get();
         return Response::json([
-            'infocollects' => $infoCollects,
+            'allData' => $allData,
         ]);
     }
 
-    public function store(Request $request)
+    public function crudStore(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|unique:info_collects,email',
+            'email' => 'required|unique:ajax_cruds,email',
         ]);
         if($validator->fails())
         {
@@ -30,21 +35,21 @@ class InfoCollectController extends Controller
                 'errors' => $validator->messages(),
             ]);
         }else{
-            $infoCollect = new InfoCollect();
-            $infoCollect->name = $request->name;
-            $infoCollect->email = $request->email;
-            $infoCollect->save();
+            $ajaxCrud = new AjaxCrud();
+            $ajaxCrud->name = $request->name;
+            $ajaxCrud->email = $request->email;
+            $ajaxCrud->save();
             return Response::json([
                 'status' => 200,
-                'message' => 'Data added successfull',
+                'message' => 'Data Added Successfull',
             ]);
         }
     }
 
 
-    public function edit($id)
+    public function crudEdit($id)
     {
-        $editId = InfoCollect::findOrFail($id);
+        $editId = AjaxCrud::findOrFail($id);
         if($editId){
             return Response::json([
                 'status' => 200,
@@ -59,11 +64,11 @@ class InfoCollectController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function crudUpdate(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required',
         ]);
         if($validator->fails())
         {
@@ -72,14 +77,14 @@ class InfoCollectController extends Controller
                 'errors' => $validator->messages(),
             ]);
         }else{
-            $infoCollect = InfoCollect::findOrFail($id);
-            if($infoCollect){
-                $infoCollect->name = $request->name;
-                $infoCollect->email = $request->email;
-                $infoCollect->save();
+            $ajaxCrud = AjaxCrud::findOrFail($id);
+            if($ajaxCrud){
+                $ajaxCrud->name = $request->name;
+                $ajaxCrud->email = $request->email;
+                $ajaxCrud->save();
                 return Response::json([
                     'status' => 200,
-                    'message' => 'Data successfully Updated',
+                    'message' => 'Data Successfully Updated',
                 ]);
             }else{
                 return Response::json([
@@ -90,14 +95,14 @@ class InfoCollectController extends Controller
         }
     }
 
-    public function delete($id)
+    public function crudDelete($id)
     {
-        $deleteId = InfoCollect::findOrFail($id);
+        $deleteId = AjaxCrud::findOrFail($id);
         if($deleteId){
             $deleteId->delete();
             return Response::json([
                 'status' => 200,
-                'message' => 'Data successfully Deleted',
+                'message' => 'Data Successfully Deleted',
             ]);
         }else{
             return Response::json([

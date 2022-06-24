@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfoCollectsTable extends Migration
+class CreateAjaxCrudsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInfoCollectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('info_collects', function (Blueprint $table) {
+        Schema::create('ajax_cruds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');
@@ -28,6 +28,6 @@ class CreateInfoCollectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('info_collects');
+        Schema::dropIfExists('ajax_cruds');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InfoCollectController;
+use App\Http\Controllers\AjaxCrudController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +15,13 @@ use App\Http\Controllers\InfoCollectController;
 */
 
 Route::get('/', function () {
-    return view('Ajax-Crud.index');
+    return view('welcome');
 });
 
-Route::get('index', [InfoCollectController::class, 'index']);
-Route::post('store', [InfoCollectController::class, 'store']);
-Route::get('edit/{id}', [InfoCollectController::class, 'edit']);
-Route::put('update/{id}', [InfoCollectController::class, 'update']);
-Route::delete('delete/{id}', [InfoCollectController::class, 'delete']);
+// Ajax Crud
+Route::get('/crude-create', [AjaxCrudController::class, 'crudCreate'])->name('crud.create');
+Route::get('/crude-index', [AjaxCrudController::class, 'crudIndex']);
+Route::post('/crude-store', [AjaxCrudController::class, 'crudStore']);
+Route::get('/crude-edit/{id}', [AjaxCrudController::class, 'crudEdit']);
+Route::put('/crude-update/{id}', [AjaxCrudController::class, 'crudUpdate']);
+Route::delete('/crude-delete/{id}', [AjaxCrudController::class, 'crudDelete']);
