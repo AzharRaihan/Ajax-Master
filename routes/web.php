@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AjaxCrudController;
+use App\Http\Controllers\DependingDropdownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,10 @@ Route::post('/state-store', [StateController::class, 'stateStore']);
 Route::get('/state-edit/{id}', [StateController::class, 'stateEdit']);
 Route::put('/state-update/{id}', [StateController::class, 'stateUpdate']);
 Route::delete('/state-delete/{id}', [StateController::class, 'stateDelete']);
+
+
+
+// Depending Dropdown 
+Route::get('depending-dropdown', [DependingDropdownController::class, 'dependingDropdown']);
+Route::get('d-country', [DependingDropdownController::class, 'dCountry']);
+Route::get('d-state/{id}', [DependingDropdownController::class, 'dState']);

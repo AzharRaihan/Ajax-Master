@@ -14,11 +14,12 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
+          <h3 class="pb-5 text-center">Country</h3>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#addModal">
             Add New
           </button>
-          <a href="{{ route('state.create') }}" class="btn btn-info">State Create</a>
+          <a href="{{ route('state.create') }}" class="btn btn-info mb-2">State Create</a>
           <div id="message"></div>
           <table class="table table-striped table-bordered">
             <thead>
