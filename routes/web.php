@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\AjaxCrudController;
+use App\Http\Controllers\MultipleRowController;
 use App\Http\Controllers\DependingDropdownController;
 
 /*
@@ -55,3 +56,7 @@ Route::delete('/state-delete/{id}', [StateController::class, 'stateDelete']);
 Route::get('depending-dropdown', [DependingDropdownController::class, 'dependingDropdown']);
 Route::get('d-country', [DependingDropdownController::class, 'dCountry']);
 Route::get('d-state/{id}', [DependingDropdownController::class, 'dState']);
+
+
+// Multiple Row
+Route::get('multiple-row', [MultipleRowController::class, 'index']);
