@@ -15,8 +15,9 @@ class CreateAjaxCrudsTable extends Migration
     {
         Schema::create('ajax_cruds', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
+            $table->string('name', 55);
+            $table->string('email', 150);
+            $table->string('photo', 255)->nullable();
             $table->timestamps();
         });
     }
