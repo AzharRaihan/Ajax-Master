@@ -27,7 +27,7 @@ Route::get('/crude-create', [AjaxCrudController::class, 'crudCreate'])->name('cr
 Route::get('/crude-index', [AjaxCrudController::class, 'crudIndex']);
 Route::post('/crude-store', [AjaxCrudController::class, 'crudStore']);
 Route::get('/crude-edit/{id}', [AjaxCrudController::class, 'crudEdit']);
-Route::put('/crude-update/{id}', [AjaxCrudController::class, 'crudUpdate']);
+Route::post('/crude-update/{id}', [AjaxCrudController::class, 'crudUpdate']);
 Route::delete('/crude-delete/{id}', [AjaxCrudController::class, 'crudDelete']);
 
 
