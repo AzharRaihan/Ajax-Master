@@ -152,13 +152,13 @@
         success: function (response) {
           $('tbody').html("");
           $.each(response.allData, function (key, item) { 
-            $('tbody').append('<tr>\
-                <th>'+item.id+'</th>\
-                <td>'+item.name+'</td>\
-                <td>'+item.email+'</td>\
-                <td><img src="uploads/photo/'+item.photo+'" height="100" width="100"></td>\
-                <td><button class="btn btn-warning btn-sm me-1" value="'+item.id+'" id="edit-data"><i class="fas fa-edit"></i> Edit</button><button class="btn btn-danger btn-sm" value="'+item.id+'" id="delete"><i class="fas fa-trash"></i> Delete</button></td>\
-              </tr>'
+            $('tbody').append(`<tr>
+                <th>${item.id}item.id</th>
+                <td>${item.name}</td>
+                <td>${item.email}</td>
+                <td><img src="uploads/photo/${item.photo}" height="100" width="100"></td>
+                <td><button class="btn btn-warning btn-sm me-1" value="${item.id}" id="edit-data"><i class="fas fa-edit"></i> Edit</button><button class="btn btn-danger btn-sm" value="${item.id}" id="delete"><i class="fas fa-trash"></i> Delete</button></td>
+              </tr>`
             );
           });
         }
